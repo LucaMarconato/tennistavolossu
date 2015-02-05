@@ -31,7 +31,7 @@ session_register("mypassword");
 header("location:dentro.php");
 }
 else {
-echo "mail/pw errato";
+echo "mail/pw errato/iscrizione multipla rilevata";
 }
 
 ?>

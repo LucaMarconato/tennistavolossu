@@ -1,4 +1,4 @@
-In questo file teniamo traccia delle modifiche che non sono comunicabili attraverso git, ad esempio le modifiche al database.
+In questo file teniamo traccia delle modifiche e delle comunicazioni che non avrebbe senso mettere come messaggio del commit di git (ad esempio le modifiche al database o cose da fare nel futuro).
 
-05/02/2015
-aggiunta la distinzione tra amministratori e utenti normali nel database
+05/02/2015 Luca Marconato
+-aggiunta la distinzione tra amministratori e utenti normali nel database

@@ -1,3 +1,4 @@
+<!--TODO: aggiungere anti-iniezione-->
 <?
 include_once("mySql.php");
 

@@ -1,3 +1,4 @@
+<!--TODO: aggiungere assolutamente l'anti iniezione prima che raggiunga troppa visibilità-->
 <!DOCTYPE html>
 <head>
 
@@ -36,7 +37,12 @@ if($nome != "" && $nome != null)
 {
 	include_once("mySql.php");
 	$database = new db();
-	$database->cmd_my_sql("INSERT INTO utenti(nome,cognome,email,password,ranking,amministratore) VALUES ('".addslashes($nome)."','".addslashes($cognome)."','".addslashes($email)."','".addslashes($password)."','1200','false')",__FILE__,__LINE__);
+	$database->cmd_my_sql("INSERT INTO utenti(nome,cognome,email,password,amministratore) VALUES ('".addslashes($nome)."','".addslashes($cognome)."','".addslashes($email)."','".addslashes($password)."','false')",__FILE__,__LINE__);
+	$res = $database->cmd_my_sql("SELECT * FROM utenti WHERE email = '$email'");
+	$fetched = mysql_fetch_array($res);
+	$userId = $fetched['userId'];
+	$timeId = date('Y-m-d H:i:s');
+	$database->cmd_my_sql("INSERT INTO elo(userId,timeId,rating) VALUES ('$userId','$timeId','1200')",__FILE__,__LINE__);
 	echo "$nome, ti sei iscritto.<BR>Per il momento il sito non e' funzionante, scriveremo nel gruppo Facebook quando lo sara'.<BR><BR>";
 	echo "<meta http-equiv=\"Refresh\" content=\"3; index.html\">";
 	return ;

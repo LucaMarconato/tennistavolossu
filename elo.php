@@ -39,7 +39,7 @@ function updateRatingFromTimeId($timeId)
 	//echo "in updateRatingFromTimeId()<BR>";
 	$database = new db();
 
-	$database->cmd_my_sql("DELETE FROM elo WHERE timeId >= '$timeId'",__FILE__,__LINE__);
+	$database->cmd_my_sql("DELETE FROM elo WHERE timeId >= '$timeId' AND startingPoint = 0",__FILE__,__LINE__);
 	$res1 = $database->cmd_my_sql("SELECT * FROM partite WHERE timeId >= '$timeId' AND approvato = 1 ORDER BY timeId ASC",__FILE__,__LINE__);
 	while($fetched1 = mysql_fetch_array($res1))
 	{
@@ -71,7 +71,7 @@ function updateRatingFromTimeId($timeId)
 	echo "Rating aggiornato.<BR>";
 }
 
-function reportMatch($matchCode)
+function reportMatch($matchCode) //TODO: bisogna criptare il numero della partita
 {
 	//echo "in reportMatch()<BR>";
 	$database = new db();

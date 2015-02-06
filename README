@@ -2,3 +2,14 @@ In questo file teniamo traccia delle modifiche e delle comunicazioni che non avr
 
 05/02/2015 Luca Marconato
 -aggiunta la distinzione tra amministratori e utenti normali nel database
+
+TODO:
+> -permettere l'inserimento delle partite
+-sostituire le mail con la barra laterale
+> -prevenire l'iniezione
+-fare una registrazione seria
+> -password hashate
+> -mettere un chapta dopo n partite inserite e richiedere l'approvazione delle partite dall'admin se ci sono punteggi enormi >= 20
+> -elo che non va
+-tabella con colori verdi e rossi
+-utente inattivo da una settimana

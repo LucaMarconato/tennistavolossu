@@ -44,7 +44,7 @@ if($nome != "" && $nome != null)
 	$timeId = date('Y-m-d H:i:s');
 	$database->cmd_my_sql("INSERT INTO elo(userId,timeId,rating,startingPoint) VALUES ('$userId','$timeId','1200','1')",__FILE__,__LINE__);
 	echo "$nome, ti sei iscritto.<BR>Per il momento il sito non e' funzionante, scriveremo nel gruppo Facebook quando lo sara'.<BR><BR>";
-	echo "<meta http-equiv=\"Refresh\" content=\"3; index.html\">";
+	echo "<meta http-equiv=\"Refresh\" content=\"3; index.php\">";
 	return ;
 }
 ?>

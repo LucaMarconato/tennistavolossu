@@ -3,7 +3,7 @@
 <?
 include_once("mySql.php");
 //la riga seguente serve solo per il debug
-confermaPunteggio($_GET['matchCode']);
+//confermaPunteggio($_GET['matchCode']);
 
 function confermaPunteggio($matchCode)
 {
@@ -27,7 +27,7 @@ function confermaPunteggio($matchCode)
 	$nomeMittente = $fetched['nome'];
 	$cognomeMittente = $fetched['cognome'];
 
-	$url = "http://tennistavolossu.altervista.org/elo.php?reportMatch=".$matchCode;
+	$url = "http://tennistavolossu.altervista.org/elo.php?matchCode=".$matchCode."$action=reportMatch";
 	$testo = "Ciao ".$nomeDestinatario.", abbiamo aggiornato il tuo rating con la seguente partita:\n".$nomeMittente." ".$cognomeMittente." ".$vinteMittente." ".$nomeDestinatario." ".$cognomesDestinatario." ".$vinteDestinatario.".\n\nSe non hai disputato tale partita, o se il risulato è differente, clicca il link sottostante per cancellarla e ricalcolare il rating senza di essa\n".$url;
 	//echo "emailDestinatario = $emailDestinatario, testo = $testo<BR>";
 	mail($emailDestinatario,"Tennis Tavolo SSU",$testo);

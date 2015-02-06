@@ -79,9 +79,24 @@ while($fetched1 = mysql_fetch_array($res1))
 
 	$res2 = $database->cmd_my_sql("SELECT * FROM utenti WHERE userId = '".$fetched1['giocatore2']."'",__FILE__,__LINE__);
 	$fetched2 = mysql_fetch_array($res2);
-	$nomeCognome2 = $fetched2['nome']." ".$fetched2['cognome'];	
+	$nomeCognome2 = $fetched2['nome']." ".$fetched2['cognome'];
 
-	echo $nomeCognome1." ".$fetched1['punteggio1']." - ".$fetched1['punteggio2']." ".$nomeCognome2."<BR>";
+	$punteggio1 = $fetched1['punteggio1'];
+	$punteggio2 = $fetched1['punteggio2'];
+
+	if($nomeCognome1 > $nomeCognome2)
+	{
+		$swap = $punteggio1;
+		$punteggio1 = $punteggio2;
+		$punteggio2 = $swap;
+
+		$swap = $nomeCognome1;
+		$nomeCognome1 = $nomeCognome2;
+		$nomeCognome2 = $swap;
+	}
+
+	//ordina alfabeticamente i due giocatori prima dell'echo
+	echo $nomeCognome1." ".$punteggio1." - ".$punteggio2." ".$nomeCognome2."<BR>";
 }
 ?>
 

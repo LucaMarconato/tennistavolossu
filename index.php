@@ -51,9 +51,9 @@ while(!$ordinati)
 		if($listaGiocatori[$i][1] > $listaGiocatori[$i-1][1])
 		{
 			$ordinati = false;
-			$swap = $listaGiocatori[$i][1];
-			$listaGiocatori[$i][1] = $listaGiocatori[$i-1][1];
-			$listaGiocatori[$i-1][1] = $swap;
+			$swap = $listaGiocatori[$i];
+			$listaGiocatori[$i] = $listaGiocatori[$i-1];
+			$listaGiocatori[$i-1] = $swap;
 		}
 	}
 }
@@ -67,5 +67,23 @@ for($i = 0; $i < $arrayLength; $i++)
 }
 ?>
 </table>
+<br><br>
+Ultime dieci giocate disputate (prima le piu' recenti)<br><br>
+<?php
+$res1 = $database->cmd_my_sql("SELECT * FROM partite WHERE approvato = 1 ORDER BY timeId DESC LIMIT 10",__FILE__,__LINE__);
+while($fetched1 = mysql_fetch_array($res1))
+{
+	$res2 = $database->cmd_my_sql("SELECT * FROM utenti WHERE userId = '".$fetched1['giocatore1']."'",__FILE__,__LINE__);
+	$fetched2 = mysql_fetch_array($res2);
+	$nomeCognome1 = $fetched2['nome']." ".$fetched2['cognome'];
+
+	$res2 = $database->cmd_my_sql("SELECT * FROM utenti WHERE userId = '".$fetched1['giocatore2']."'",__FILE__,__LINE__);
+	$fetched2 = mysql_fetch_array($res2);
+	$nomeCognome2 = $fetched2['nome']." ".$fetched2['cognome'];	
+
+	echo $nomeCognome1." ".$fetched1['punteggio1']." - ".$fetched1['punteggio2']." ".$nomeCognome2."<BR>";
+}
+?>
+
 </body>
 </html>

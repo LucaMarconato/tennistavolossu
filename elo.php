@@ -60,7 +60,7 @@ function updateRatingFromTimeId($timeId)
 			//algoritmo elo
 			$se = 1/(1+pow(10, ($ranking1 - $ranking2)/400))*($punteggio1+$punteggio2);
 			$sr = $punteggio1;
-			$increment = ($sr - $se)*20;
+			$increment = ($sr - $se)*24;
 			$newRating1 = $rating1 + $increment;
 			$newRating2 = $rating2 - $increment;
 

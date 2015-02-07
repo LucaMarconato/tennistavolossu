@@ -63,12 +63,16 @@ for($i = 0; $i < $arrayLength; $i++)
 	$res = $database->cmd_my_sql("SELECT * FROM utenti WHERE userId = '".$listaGiocatori[$i][0]."'",__FILE__,__LINE__);
 	$fetched = mysql_fetch_array($res);
 	$nomeCognome = $fetched['nome']." ".$fetched['cognome'];
+	if($nomeCognome == "Luca Marconato")
+	{
+		$nomeCognome = "<a href=\"campione.JPG\">Luca Marconato</A>";
+	}
 	echo "<tr><td>".($i+1)."</td><td>".$nomeCognome."</td><td>".$listaGiocatori[$i][1]."</td></tr>";
 }
 ?>
 </table>
 <br><br>
-Ultime dieci giocate disputate (prima le piu' recenti)<br><br>
+Ultime dieci giocate disputate, i numeri indicano le partite fatte (prima le piu' recenti)<br><br>
 <?php
 $res1 = $database->cmd_my_sql("SELECT * FROM partite WHERE approvato = 1 ORDER BY timeId DESC LIMIT 10",__FILE__,__LINE__);
 while($fetched1 = mysql_fetch_array($res1))

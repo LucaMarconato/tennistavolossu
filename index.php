@@ -72,7 +72,7 @@ for($i = 0; $i < $arrayLength; $i++)
 ?>
 </table>
 <br><br>
-Ultime dieci giocate disputate, i numeri indicano le partite fatte (prima le piu' recenti)<br><br>
+Ultime dieci giocate disputate (prima le piu' recenti). I numeri indicano le partite vinte.<br><br>
 <?php
 $res1 = $database->cmd_my_sql("SELECT * FROM partite WHERE approvato = 1 ORDER BY timeId DESC LIMIT 10",__FILE__,__LINE__);
 while($fetched1 = mysql_fetch_array($res1))
